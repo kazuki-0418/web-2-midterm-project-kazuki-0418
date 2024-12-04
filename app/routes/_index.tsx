@@ -1,5 +1,5 @@
-import { Link } from "@remix-run/react";
+import Sidebar from "../components/sidebar";
 
 export default function Index() {
-  return <Link to="/page1">Go to Page 1</Link>;
+  return <Sidebar />;
 }
