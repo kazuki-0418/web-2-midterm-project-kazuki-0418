@@ -1,5 +1,4 @@
-import Card from "../components/card";
-import Sidebar from "../components/sidebar";
+import { Home } from "../components/pages/home/home";
 
 const data = {
   page: 1,
@@ -374,18 +373,7 @@ export default function Index() {
   const { results } = data;
   return (
     <>
-      <Sidebar />
-      <Card
-        title={results[0].title}
-        date={results[0].release_date}
-        description={results[0].overview}
-        review={results[0].vote_average}
-        likes={results[0].vote_count}
-        tags={["Horror", "Mystery", "Thriller"]}
-        originalTitle={results[0].original_title}
-        originalLanguage={results[0].original_language}
-        imageUrl={`https://image.tmdb.org/t/p/w500${results[0].poster_path}`}
-      />
+      <Home results={results} />
     </>
   );
 }

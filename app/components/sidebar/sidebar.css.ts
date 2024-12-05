@@ -20,6 +20,7 @@ const sizes = {
 
 // サイドバー全体のスタイル
 export const sidebar = style({
+  gridArea: "sidebar",
   width: sizes.sidebarWidth,
   height: "94vh",
   backgroundColor: colors.background,
