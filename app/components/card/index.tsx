@@ -50,7 +50,6 @@ const Card: React.FC<CardProps> = ({
             orientation="horizontal"
           />
           <p>{originalTitle}</p>
-          {/* <p>{originalLanguage}</p> */}
           <TagList
             type="category"
             tags={["New", "Popular", originalLanguage]}
@@ -61,7 +60,15 @@ const Card: React.FC<CardProps> = ({
 
       {/* 右側の画像 */}
       <div className={styles.imageContainer}>
-        <img src={imageUrl} alt={imageUrl} className={styles.image} />
+        <img
+          src={
+            imageUrl
+              ? `https://image.tmdb.org/t/p/w500${imageUrl}`
+              : "https://via.placeholder.com/500"
+          }
+          alt={imageUrl}
+          className={styles.image}
+        />
       </div>
     </div>
   );

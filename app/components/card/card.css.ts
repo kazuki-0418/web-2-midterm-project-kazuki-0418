@@ -39,6 +39,7 @@ export const content = style({
   display: "flex",
   flexDirection: "column",
   justifyContent: "space-between",
+  overflow: "auto",
 });
 
 // タイトルと日付
