@@ -12,16 +12,25 @@ export const layout = style({
   height: "100vh", // ビューポート全体を使用
   width: "100vw",
   backgroundColor: "#ede4d1", // 全体の背景色
+
+  "@media": {
+    "(max-width: 800px)": {
+      gridTemplateColumns: "1fr", // サイドバーを非表示に
+      gridTemplateAreas: `
+          "header"
+          "main"
+        `,
+    },
+  },
 });
 
 // メインコンテンツエリア
 export const main = style({
   gridArea: "main",
   padding: "16px",
-  overflowY: "auto", // 縦方向のスクロールを許可
-
+  overflowY: "auto",
   display: "grid",
-  gridTemplateColumns: "repeat(auto-fill, minmax(400px, 528px ))",
+  gridTemplateColumns: "repeat(auto-fill, minmax(400px, 500px))",
   rowGap: "44px",
   justifyContent: "center",
   alignItems: "center",

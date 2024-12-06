@@ -130,3 +130,13 @@ export const image = style({
   objectFit: "cover",
   borderRadius: `0 ${sizes.borderRadius} ${sizes.borderRadius} 0`,
 });
+
+export const backDropImage = style({
+  position: "absolute",
+  top: 0,
+  left: 0,
+  width: "100%",
+  height: "100%",
+  objectFit: "cover",
+  zIndex: -1,
+});
