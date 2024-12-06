@@ -11,28 +11,41 @@ export const Text = style({
   color: "#333333",
   height: "32px",
   lineHeight: "32px",
-  width: "48px",
+  width: "fit-content",
   textAlign: "center",
+  fontWeight: "bold",
 
   ":hover": {
     color: vars.color.rubyFlame,
     cursor: "pointer",
-    fontWeight: "bold",
-    fontFamily: "",
   },
+});
+
+export const Active = style({
+  color: vars.color.rubyFlame,
 });
 
 export const SeparatorRoot = style({
   backgroundColor: "#333333",
   width: "1px",
   height: "20px",
-  margin: "0 10px",
+  // margin: "0 10px",
 });
 
 export const NavigationMenu = style({
   display: "flex",
   alignItems: "center",
+  justifyContent: "center",
+  gap: "10px",
   marginTop: "32px",
+  marginRight: "92px",
+  width: "100%",
+
+  "@media": {
+    "(max-width: 800px)": {
+      display: "none",
+    },
+  },
 });
 
 export const header = style({
@@ -41,8 +54,6 @@ export const header = style({
   alignItems: "center",
   padding: "0 16px",
   height: "60px", // 固定の高さ
-  width: calc.subtract("100vw", "322px"),
-  gap: "30%",
 });
 
 export const headerNav = style({
@@ -71,16 +82,6 @@ export const headerNavLogoImg = styleVariants({
 
 export const headerNavSmall = style({
   padding: `${globalVars.padding.small} 0`,
-  // selectors: {
-  //   [`& .${headerNavLogoImg.small}`]: {
-  //     height: globalVars.logo.small,
-  //   },
-  // },
-});
-
-export const mainSp = mediaQuery("(max-width: 1024px)", {
-  transition: `padding ${globalVars.sp.transitionSpeed} ease, transform ${globalVars.sp.transitionSpeed} ease`,
-  paddingTop: globalVars.sp.headerHeight.large,
 });
 
 // リストアイテム
@@ -102,6 +103,12 @@ export const logoContainer = style({
   justifyContent: "center",
   width: "120px",
   height: "32px",
+
+  "@media": {
+    "(max-width: 800px)": {
+      display: "none",
+    },
+  },
 });
 
 export const logo = style({

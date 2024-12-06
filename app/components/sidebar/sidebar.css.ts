@@ -30,9 +30,13 @@ export const sidebar = style({
   justifyContent: "space-between",
   fontFamily: "Arial, sans-serif",
   overflow: "hidden",
+});
+
+export const sidebarHeader = style({
   "@media": {
-    "(max-width: 768px)": {
+    "(max-width: 800px)": {
       display: "none",
+      width: "60px",
     },
   },
 });
@@ -88,9 +92,14 @@ export const genreItem = style({
   fontWeight: "bold",
   color: colors.text,
   cursor: "pointer",
+  padding: "10px",
   ":hover": {
     color: vars.color.rubyFlame,
   },
+});
+
+export const active = style({
+  color: vars.color.rubyFlame,
 });
 
 // トグル切り替え部分

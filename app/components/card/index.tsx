@@ -4,6 +4,8 @@ import { FaHeart } from "react-icons/fa";
 import TagList from "../tags";
 import Rating from "./Rating";
 import * as styles from "./card.css";
+import Carousel from "./carousel";
+import type { Media } from "../../types/Media";
 
 type CardProps = {
   title: string;
@@ -15,6 +17,9 @@ type CardProps = {
   originalTitle: string;
   originalLanguage: string;
   imageUrl: string;
+  backDropPath?: string;
+  isAdult: boolean;
+  media: Media;
 };
 
 const Card: React.FC<CardProps> = ({
@@ -27,7 +32,32 @@ const Card: React.FC<CardProps> = ({
   originalTitle,
   originalLanguage,
   imageUrl,
+  backDropPath,
+  isAdult,
+  media,
 }) => {
+  const categorizeTags = (
+    media: Media,
+    isAdult: boolean,
+    originalLanguage: string
+  ) => {
+    const tags = [];
+    if (media === "movie") {
+      tags.push("Movie");
+    }
+
+    if (media === "tv") {
+      tags.push("TV Show");
+    }
+
+    if (isAdult) {
+      tags.push("Adult");
+    }
+
+    tags.push(originalLanguage);
+    return tags;
+  };
+
   return (
     <div className={styles.card}>
       <div className={styles.content}>
@@ -52,7 +82,7 @@ const Card: React.FC<CardProps> = ({
           <p>{originalTitle}</p>
           <TagList
             type="category"
-            tags={["New", "Popular", originalLanguage]}
+            tags={categorizeTags(media, isAdult, originalLanguage)}
           />
           <TagList type="genre" tags={tags} />
         </div>
@@ -60,15 +90,31 @@ const Card: React.FC<CardProps> = ({
 
       {/* 右側の画像 */}
       <div className={styles.imageContainer}>
-        <img
-          src={
-            imageUrl
-              ? `https://image.tmdb.org/t/p/w500${imageUrl}`
-              : "https://via.placeholder.com/500"
-          }
-          alt={imageUrl}
-          className={styles.image}
+        <Carousel
+          slides={[
+            <img
+              key={imageUrl}
+              src={
+                imageUrl
+                  ? `https://image.tmdb.org/t/p/w500${imageUrl}`
+                  : "https://via.placeholder.com/500"
+              }
+              alt={imageUrl}
+              className={styles.image}
+            />,
+            <img
+              key={backDropPath}
+              src={
+                backDropPath
+                  ? `https://image.tmdb.org/t/p/w500${backDropPath}`
+                  : "https://via.placeholder.com/500"
+              }
+              alt={imageUrl}
+              className={`${styles.image} ${styles.backDropImage}`}
+            />,
+          ]}
         />
+        ,
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
 import { useParams } from "@remix-run/react";
 
-const movie = () => {
+const MovieDetail = () => {
   const params = useParams();
 
   const { id } = params;
@@ -8,4 +8,4 @@ const movie = () => {
   return <div>movie.{id}</div>;
 };
 
-export default movie;
+export default MovieDetail;
