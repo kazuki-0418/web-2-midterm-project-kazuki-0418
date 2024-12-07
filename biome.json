@@ -10,7 +10,7 @@
     "ignore": ["**/node_modules/**"]
   },
   "organizeImports": {
-    "enabled": false
+    "enabled": true
   },
   "formatter": {
     "enabled": true,
@@ -25,7 +25,8 @@
     "enabled": true,
     "rules": {
       "recommended": true,
-      "nursery": { "useSortedClasses": "warn" }
+      "nursery": { "useSortedClasses": "warn" },
+      "correctness": { "noUnusedImports": "warn", "noUnusedVariables": "warn" }
     }
   },
   "javascript": {
