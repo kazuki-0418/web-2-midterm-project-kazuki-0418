@@ -1,21 +1,28 @@
-import { useState, type Dispatch, type FC, type SetStateAction } from "react";
+import type { FC } from "react";
 import { NavigationMenuComponent } from ".";
 import * as styles from "./header.css";
-import { CiSearch } from "react-icons/ci";
-import { IconButton } from "@radix-ui/themes";
-import type { Media } from "../../types/Media";
-import useMedia from "../../stores/MediaType";
 import Dialog from "../dialog";
+import { useLocation, useParams } from "@remix-run/react";
+import { Link } from "react-router-dom";
 
 export const Header: FC = (props) => {
+  const location = useLocation();
+
+  const isHome = location.pathname === "/";
+
   return (
     <header className={styles.header}>
       <div className={styles.logoContainer}>
-        <img className={styles.logo} src="/assets/logos/movie.png" alt="logo" />
+        {isHome && <Dialog />}
+        <Link to={"/"}>
+          <img
+            className={styles.logo}
+            src="/assets/logos/movie.png"
+            alt="logo"
+          />
+        </Link>
       </div>
-      <Dialog />
-
-      <NavigationMenuComponent {...props} />
+      {isHome && <NavigationMenuComponent {...props} />}
     </header>
   );
 };

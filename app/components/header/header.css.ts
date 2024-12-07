@@ -103,12 +103,12 @@ export const logoContainer = style({
   justifyContent: "center",
   width: "120px",
   height: "32px",
-
-  "@media": {
-    "(max-width: 800px)": {
-      display: "none",
-    },
-  },
+  gap: "24px",
+  // "@media": {
+  //   "(max-width: 800px)": {
+  //     display: "none",
+  //   },
+  // },
 });
 
 export const logo = style({
