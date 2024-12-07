@@ -5,12 +5,20 @@ type RatingProps = {
   value: number; // 現在の評価値
   max?: number; // 最大星数（デフォルト5）
   readOnly?: boolean; // 読み取り専用モード
+  size?: "small" | "medium" | "large"; // 星のサイズ
+};
+
+const starSize = {
+  small: "24px",
+  medium: "32px",
+  large: "48px",
 };
 
 const Rating: React.FC<RatingProps> = ({
   value,
   max = 5,
   readOnly = false,
+  size = "small",
 }) => {
   value = Math.round(value * 2) / 2 / 2;
 
@@ -29,7 +37,7 @@ const Rating: React.FC<RatingProps> = ({
             style={{
               position: "relative",
               cursor: readOnly ? "default" : "pointer",
-              fontSize: "24px",
+              fontSize: starSize[size],
             }}
             // onClick={() => handleRatingClick(star)}
           >

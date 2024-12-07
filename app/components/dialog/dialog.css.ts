@@ -91,6 +91,7 @@ export const genreList = style({
   flexDirection: "column",
   gap: "16px",
   overflowY: "auto",
+  height: "calc(100vh - 100px)",
 });
 
 export const genreItem = style({

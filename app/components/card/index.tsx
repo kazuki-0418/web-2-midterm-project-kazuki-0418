@@ -4,7 +4,6 @@ import { FaHeart } from "react-icons/fa";
 import TagList from "../tags";
 import Rating from "./Rating";
 import * as styles from "./card.css";
-import Carousel from "./carousel";
 import type { Media } from "../../types/Media";
 
 type CardProps = {
@@ -88,31 +87,16 @@ const Card: React.FC<CardProps> = ({
         </div>
       </div>
 
-      {/* 右側の画像 */}
       <div className={styles.imageContainer}>
-        <Carousel
-          slides={[
-            <img
-              key={imageUrl}
-              src={
-                imageUrl
-                  ? `https://image.tmdb.org/t/p/w500${imageUrl}`
-                  : "https://via.placeholder.com/500"
-              }
-              alt={imageUrl}
-              className={styles.image}
-            />,
-            <img
-              key={backDropPath}
-              src={
-                backDropPath
-                  ? `https://image.tmdb.org/t/p/w500${backDropPath}`
-                  : "https://via.placeholder.com/500"
-              }
-              alt={imageUrl}
-              className={`${styles.image} ${styles.backDropImage}`}
-            />,
-          ]}
+        <img
+          key={imageUrl}
+          src={
+            imageUrl
+              ? `https://image.tmdb.org/t/p/w500${imageUrl}`
+              : "https://via.placeholder.com/500"
+          }
+          alt={imageUrl}
+          className={styles.image}
         />
         ,
       </div>

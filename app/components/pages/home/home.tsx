@@ -9,6 +9,7 @@ import type { Movie } from "../../../types/Movie";
 import type { Tv } from "../../../types/TV";
 import useMedia from "../../../stores/MediaType";
 import Dialog from "../../dialog";
+import { Link } from "@remix-run/react";
 
 export const Home = ({
   movieResults,
@@ -64,39 +65,43 @@ export const Home = ({
       <main className={styles.main}>
         {mediaType === "movie" &&
           filterByResults(movieResults).map((result: Movie) => (
-            <Card
-              key={result.title}
-              title={result.title}
-              date={result.release_date}
-              description={result.overview}
-              review={result.vote_average}
-              likes={result.vote_count}
-              originalTitle={result.original_title}
-              originalLanguage={result.original_language}
-              imageUrl={result.poster_path}
-              backDropPath={result.backdrop_path}
-              tags={convertGenreIdsToNames(result.genre_ids)}
-              isAdult={result.adult}
-              media={result.media_type}
-            />
+            <Link to={`/movie/${result.id}`} key={result.title}>
+              <Card
+                key={result.title}
+                title={result.title}
+                date={result.release_date}
+                description={result.overview}
+                review={result.vote_average}
+                likes={result.vote_count}
+                originalTitle={result.original_title}
+                originalLanguage={result.original_language}
+                imageUrl={result.poster_path}
+                backDropPath={result.backdrop_path}
+                tags={convertGenreIdsToNames(result.genre_ids)}
+                isAdult={result.adult}
+                media={result.media_type}
+              />
+            </Link>
           ))}
         {mediaType === "tv" &&
           filterByResults(tvResults).map((result: Tv) => (
-            <Card
-              key={result.name}
-              title={result.name}
-              date={result.first_air_date}
-              description={result.overview}
-              review={result.vote_average}
-              likes={result.vote_count}
-              originalTitle={result.original_name}
-              originalLanguage={result.original_language}
-              imageUrl={result.poster_path}
-              backDropPath={result.backdrop_path}
-              tags={convertGenreIdsToNames(result.genre_ids)}
-              isAdult={result.adult}
-              media={result.media_type}
-            />
+            <Link to={`/tv/${result.id}`} key={result.name}>
+              <Card
+                key={result.name}
+                title={result.name}
+                date={result.first_air_date}
+                description={result.overview}
+                review={result.vote_average}
+                likes={result.vote_count}
+                originalTitle={result.original_name}
+                originalLanguage={result.original_language}
+                imageUrl={result.poster_path}
+                backDropPath={result.backdrop_path}
+                tags={convertGenreIdsToNames(result.genre_ids)}
+                isAdult={result.adult}
+                media={result.media_type}
+              />
+            </Link>
           ))}
       </main>
     </div>

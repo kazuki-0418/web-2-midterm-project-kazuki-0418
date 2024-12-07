@@ -39,7 +39,7 @@ export const content = style({
   display: "flex",
   flexDirection: "column",
   justifyContent: "space-between",
-  overflow: "auto",
+  height: "100%",
 });
 
 // タイトルと日付
@@ -129,14 +129,4 @@ export const image = style({
   height: "100%",
   objectFit: "cover",
   borderRadius: `0 ${sizes.borderRadius} ${sizes.borderRadius} 0`,
-});
-
-export const backDropImage = style({
-  position: "absolute",
-  top: 0,
-  left: 0,
-  width: "100%",
-  height: "100%",
-  objectFit: "cover",
-  zIndex: -1,
 });
