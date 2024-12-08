@@ -3,9 +3,15 @@ import type { FC } from "react";
 import { Link } from "react-router-dom";
 import { NavigationMenuComponent } from ".";
 import Dialog from "../dialog";
+import { Select } from "../select";
 import * as styles from "./header.css";
 
-export const Header: FC = (props) => {
+type HeaderProps = {
+	language: string;
+};
+
+export const Header: FC<HeaderProps> = (props) => {
+	const language = props.language;
 	const location = useLocation();
 
 	const isHome = location.pathname === "/";
@@ -22,7 +28,8 @@ export const Header: FC = (props) => {
 					/>
 				</Link>
 			</div>
-			{isHome && <NavigationMenuComponent {...props} />}
+			{isHome && <NavigationMenuComponent />}
+			<Select defaultValue={language} />
 		</header>
 	);
 };

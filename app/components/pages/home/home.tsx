@@ -14,10 +14,12 @@ export const Home = ({
 	movieResults,
 	tvResults,
 	genres,
+	language,
 }: {
 	movieResults: Movie[];
 	tvResults: Tv[];
 	genres: Genre[];
+	language: string;
 }) => {
 	const { selectedGenre } = useGenre();
 	const { keyword } = useKeyword();
@@ -58,49 +60,51 @@ export const Home = ({
 	};
 
 	return (
-		<div className={styles.layout}>
-			<Header />
-			<Sidebar />
-			<main className={styles.main}>
-				{mediaType === "movie" &&
-					filterByResults(movieResults).map((result: Movie) => (
-						<Link to={`/movie/${result.id}`} key={result.title}>
-							<Card
-								key={result.title}
-								title={result.title}
-								date={result.release_date}
-								description={result.overview}
-								review={result.vote_average}
-								likes={result.vote_count}
-								originalTitle={result.original_title}
-								originalLanguage={result.original_language}
-								imageUrl={result.poster_path}
-								tags={convertGenreIdsToNames(result.genre_ids)}
-								isAdult={result.adult}
-								media={result.media_type}
-							/>
-						</Link>
-					))}
-				{mediaType === "tv" &&
-					filterByResults(tvResults).map((result: Tv) => (
-						<Link to={`/tv/${result.id}`} key={result.name}>
-							<Card
-								key={result.name}
-								title={result.name}
-								date={result.first_air_date}
-								description={result.overview}
-								review={result.vote_average}
-								likes={result.vote_count}
-								originalTitle={result.original_name}
-								originalLanguage={result.original_language}
-								imageUrl={result.poster_path}
-								tags={convertGenreIdsToNames(result.genre_ids)}
-								isAdult={result.adult}
-								media={result.media_type}
-							/>
-						</Link>
-					))}
-			</main>
-		</div>
+		<form method="post">
+			<div className={styles.layout}>
+				<Header language={language} />
+				<Sidebar genres={genres} />
+				<main className={styles.main}>
+					{mediaType === "movie" &&
+						filterByResults(movieResults).map((result: Movie) => (
+							<Link to={`/movie/${result.id}`} key={result.title}>
+								<Card
+									key={result.title}
+									title={result.title}
+									date={result.release_date}
+									description={result.overview}
+									review={result.vote_average}
+									likes={result.vote_count}
+									originalTitle={result.original_title}
+									originalLanguage={result.original_language}
+									imageUrl={result.poster_path}
+									tags={convertGenreIdsToNames(result.genre_ids)}
+									isAdult={result.adult}
+									media={result.media_type}
+								/>
+							</Link>
+						))}
+					{mediaType === "tv" &&
+						filterByResults(tvResults).map((result: Tv) => (
+							<Link to={`/tv/${result.id}`} key={result.name}>
+								<Card
+									key={result.name}
+									title={result.name}
+									date={result.first_air_date}
+									description={result.overview}
+									review={result.vote_average}
+									likes={result.vote_count}
+									originalTitle={result.original_name}
+									originalLanguage={result.original_language}
+									imageUrl={result.poster_path}
+									tags={convertGenreIdsToNames(result.genre_ids)}
+									isAdult={result.adult}
+									media={result.media_type}
+								/>
+							</Link>
+						))}
+				</main>
+			</div>
+		</form>
 	);
 };
