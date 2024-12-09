@@ -6,14 +6,19 @@ import { getGenres } from "../services/getGenres";
 import { getUserLanguage } from "../services/getLanguage";
 import { getMovies } from "../services/getMovies";
 import { getTvs } from "../services/getTvs";
+import type { TimeWidow } from "../types/TimeWidow";
 import { langCookie } from "../utils/languageCookie";
 
 export async function loader({ request }: LoaderFunctionArgs) {
 	const language = (await getUserLanguage(request)) ?? "en";
+	const url = new URL(request.url);
+
+	const widow =
+		(url.searchParams.get("widow") as TimeWidow | undefined) ?? "day";
 	return Response.json({
 		genres: await getGenres(language),
-		movies: await getMovies("day", language),
-		tvs: await getTvs("day", language),
+		movies: await getMovies(widow, language),
+		tvs: await getTvs(widow, language),
 		language,
 	});
 }

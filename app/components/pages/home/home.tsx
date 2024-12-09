@@ -1,4 +1,4 @@
-import { Link } from "@remix-run/react";
+import { Link, useSearchParams } from "@remix-run/react";
 import useMedia from "../../../stores/MediaType";
 import useGenre from "../../../stores/genre";
 import useKeyword from "../../../stores/keyword";
@@ -24,6 +24,7 @@ export const Home = ({
 	const { selectedGenre } = useGenre();
 	const { keyword } = useKeyword();
 	const { mediaType } = useMedia();
+	const [searchParams] = useSearchParams();
 
 	const filterByResults = (results: (Movie | Tv)[]) => {
 		const filterByKeyword = (result: Movie | Tv) => {
@@ -67,7 +68,13 @@ export const Home = ({
 				<main className={styles.main}>
 					{mediaType === "movie" &&
 						filterByResults(movieResults).map((result: Movie) => (
-							<Link to={`/movie/${result.id}`} key={result.title}>
+							<Link
+								to={{
+									pathname: `/movie/${result.id}`,
+									search: `?${searchParams.toString()}`,
+								}}
+								key={result.title}
+							>
 								<Card
 									key={result.title}
 									title={result.title}
@@ -86,7 +93,13 @@ export const Home = ({
 						))}
 					{mediaType === "tv" &&
 						filterByResults(tvResults).map((result: Tv) => (
-							<Link to={`/tv/${result.id}`} key={result.name}>
+							<Link
+								to={{
+									pathname: `/tv/${result.id}`,
+									search: `?${searchParams.toString()}`,
+								}}
+								key={result.name}
+							>
 								<Card
 									key={result.name}
 									title={result.name}

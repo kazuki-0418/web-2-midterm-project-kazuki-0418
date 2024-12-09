@@ -1,5 +1,4 @@
 import * as BasicSelect from "@radix-ui/react-select";
-import { useFetcher } from "@remix-run/react";
 import type * as React from "react";
 import * as styles from "./select.css";
 
@@ -8,22 +7,17 @@ type Option = {
 	value: string;
 };
 
-const options: Option[] = [
-	{ label: "English", value: "en" },
-	{ label: "日本語", value: "ja" },
-];
-
 type SelectProps = {
+	options: Option[];
 	defaultValue?: string;
+	handleChange?: (value: string) => void;
 };
 
-export const Select: React.FC<SelectProps> = ({ defaultValue = "en" }) => {
-	const fetcher = useFetcher();
-
-	const handleChange = (value: string) => {
-		fetcher.submit({ language: value }, { method: "post" });
-	};
-
+export const Select: React.FC<SelectProps> = ({
+	options,
+	defaultValue = options[0].value,
+	handleChange,
+}) => {
 	return (
 		<BasicSelect.Root defaultValue={defaultValue} onValueChange={handleChange}>
 			<BasicSelect.Trigger className={styles.selectTrigger}>

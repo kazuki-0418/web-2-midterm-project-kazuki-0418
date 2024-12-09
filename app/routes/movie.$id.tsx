@@ -5,14 +5,16 @@ import { getGenres } from "../services/getGenres";
 import { getUserLanguage } from "../services/getLanguage";
 import { getMovies } from "../services/getMovies";
 import type { Movie } from "../types/Movie";
+import type { TimeWidow } from "../types/TimeWidow";
 import { langCookie } from "../utils/languageCookie";
 
 export async function loader({ request }: LoaderFunctionArgs) {
 	const language = await getUserLanguage(request);
-
+	const widow =
+		(new URL(request.url).searchParams.get("widow") as TimeWidow) ?? "day";
 	return Response.json({
 		genres: await getGenres(language),
-		movies: await getMovies("day", language),
+		movies: await getMovies(widow, language),
 		language,
 	});
 }

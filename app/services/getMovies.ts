@@ -1,4 +1,4 @@
-type TimeWidow = "day" | "week";
+import type { TimeWidow } from "../types/TimeWidow";
 
 export const getMovies = async (timeWidow: TimeWidow, language: string) => {
 	const res = await fetch(

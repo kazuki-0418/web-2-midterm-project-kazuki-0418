@@ -5,13 +5,16 @@ import { getGenres } from "../services/getGenres";
 import { getUserLanguage } from "../services/getLanguage";
 import { getTvs } from "../services/getTvs";
 import type { Tv } from "../types/TV";
+import type { TimeWidow } from "../types/TimeWidow";
 
 export async function loader({ request }: LoaderFunctionArgs) {
 	const language = (await getUserLanguage(request)) || "en";
+	const widow =
+		(new URL(request.url).searchParams.get("widow") as TimeWidow) ?? "day";
 
 	return Response.json({
 		genres: await getGenres(language),
-		tvs: await getTvs("day", language),
+		tvs: await getTvs(widow, language),
 		language,
 	});
 }
