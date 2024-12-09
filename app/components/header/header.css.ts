@@ -36,7 +36,6 @@ export const NavigationMenu = style({
 	justifyContent: "center",
 	gap: "10px",
 	marginTop: "32px",
-	marginRight: "92px",
 	width: "100%",
 
 	"@media": {

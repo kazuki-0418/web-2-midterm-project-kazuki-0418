@@ -15,7 +15,7 @@ export const selectTrigger = style({
 	width: "120px",
 	backgroundColor: vars.color.ivorySand,
 	color: "#CC342F", // アクセントカラー
-	boxShadow: "0 2px 10px rgba(0, 0, 0, 0.7)",
+	boxShadow: "0 2px 10px rgba(0, 0, 0, 0.2)",
 	selectors: {
 		"&:hover": {
 			backgroundColor: "#F9E6E5", // アクセントカラーの薄い背景

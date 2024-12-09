@@ -5,6 +5,7 @@ export const getMovies = async (timeWidow: TimeWidow, language: string) => {
 		`https://api.themoviedb.org/3/trending/movie/${timeWidow}?language=${language}`,
 		{
 			headers: {
+				method: "GET",
 				Authorization: `Bearer ${process.env.API_KEY}`,
 				"Content-Type": "application/json",
 			},

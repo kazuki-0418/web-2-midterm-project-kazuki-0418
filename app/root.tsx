@@ -3,9 +3,9 @@ import "./css/global.css";
 
 export default function App() {
 	return (
-		<html lang="en">
+		<html lang={"ja"}>
 			<head>
-				<link rel="icon" href="data:image/x-icon;base64,AA" />
+				<meta charSet="utf-8" />
 				<Meta />
 				<Links />
 			</head>
