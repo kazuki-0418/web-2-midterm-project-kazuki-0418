@@ -14,23 +14,23 @@ export const selectTrigger = style({
 	gap: "5px",
 	width: "120px",
 	backgroundColor: vars.color.ivorySand,
-	color: "#CC342F", // アクセントカラー
+	color: vars.color.rubyFlame, // アクセントカラー
 	boxShadow: "0 2px 10px rgba(0, 0, 0, 0.2)",
 	selectors: {
 		"&:hover": {
-			backgroundColor: "#F9E6E5", // アクセントカラーの薄い背景
+			backgroundColor: vars.color.blushPetal, // アクセントカラーの薄い背景
 		},
 		"&:focus": {
-			boxShadow: "0 0 0 2px #CC342F", // アクセントカラーのフォーカスリング
+			boxShadow: `0 0 0 2px ${vars.color.rubyFlame}`, // アクセントカラーのフォーカスリング
 		},
 		"&[data-placeholder]": {
-			color: "#E57368", // アクセントカラーの薄い色
+			color: vars.color.brushRose, // アクセントカラーの薄い色
 		},
 	},
 });
 
 export const selectIcon = style({
-	color: "#CC342F", // アクセントカラー
+	color: vars.color.rubyFlame, // アクセントカラー
 });
 
 export const selectContent = style({
@@ -48,7 +48,7 @@ export const selectViewport = style({
 export const selectItem = style({
 	fontSize: "13px",
 	lineHeight: "1",
-	color: "#CC342F", // アクセントカラー
+	color: vars.color.rubyFlame, // アクセントカラー
 	borderRadius: "3px",
 	display: "flex",
 	alignItems: "center",

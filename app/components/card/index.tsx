@@ -1,8 +1,8 @@
 import * as Separator from "@radix-ui/react-separator";
 import type React from "react";
-import { FaHeart } from "react-icons/fa";
 import type { Media } from "../../types/Media";
 import TagList from "../tags";
+import { Favorite } from "./Favorite";
 import Rating from "./Rating";
 import * as styles from "./card.css";
 
@@ -66,10 +66,7 @@ const Card: React.FC<CardProps> = ({
 						<div className={styles.stars}>
 							<Rating value={review} readOnly />
 						</div>
-						<div className={styles.favorite}>
-							<FaHeart />
-							<span>{likes}</span>
-						</div>
+						<Favorite likes={likes} />
 					</div>
 					<Separator.Root
 						className={styles.separator}

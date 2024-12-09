@@ -1,6 +1,5 @@
 import * as BasicSelect from "@radix-ui/react-select";
 import { useFetcher } from "@remix-run/react";
-// components/BasicSelect.tsx
 import type * as React from "react";
 import * as styles from "./select.css";
 

@@ -6,7 +6,7 @@ import { vars } from "../../css/theme.css";
 export const Text = style({
 	fontFamily: "Arial, sans-serif",
 	fontSize: "16px",
-	color: "#333333",
+	color: vars.color.charcoalBlack,
 	height: "32px",
 	lineHeight: "32px",
 	width: "fit-content",
@@ -24,7 +24,7 @@ export const Active = style({
 });
 
 export const SeparatorRoot = style({
-	backgroundColor: "#333333",
+	backgroundColor: vars.color.charcoalBlack,
 	width: "1px",
 	height: "20px",
 	// margin: "0 10px",
