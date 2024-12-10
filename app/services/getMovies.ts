@@ -1,4 +1,9 @@
+import type { Movie } from "../types/Movie";
 import type { TimeWidow } from "../types/TimeWidow";
+
+type ResponseMovie = {
+	results: Movie[];
+};
 
 export const getMovies = async (timeWidow: TimeWidow, language: string) => {
 	const res = await fetch(
@@ -11,6 +16,6 @@ export const getMovies = async (timeWidow: TimeWidow, language: string) => {
 			},
 		},
 	);
-	const data = await res.json();
+	const data: ResponseMovie = await res.json();
 	return data.results;
 };

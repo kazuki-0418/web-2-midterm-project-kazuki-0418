@@ -1,4 +1,9 @@
-type TimeWidow = "day" | "week";
+import type { Tv } from "../types/TV";
+import type { TimeWidow } from "../types/TimeWidow";
+
+type ResponseTv = {
+	results: Tv[];
+};
 
 export const getTvs = async (timeWidow: TimeWidow, language: string) => {
 	const res = await fetch(
@@ -10,6 +15,6 @@ export const getTvs = async (timeWidow: TimeWidow, language: string) => {
 			},
 		},
 	);
-	const data = await res.json();
+	const data: ResponseTv = await res.json();
 	return data.results;
 };

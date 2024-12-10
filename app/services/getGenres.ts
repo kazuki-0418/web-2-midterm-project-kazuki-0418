@@ -1,4 +1,10 @@
-export const getGenres = async (language: string) => {
+import type { Genre } from "../types/Genre";
+
+type GenreResponse = {
+	genres: Genre[];
+};
+
+export const getGenres = async (language: string): Promise<Genre[]> => {
 	const res = await fetch(`${process.env.BASE_URL}?language=${language}`, {
 		headers: {
 			method: "GET",
@@ -6,6 +12,6 @@ export const getGenres = async (language: string) => {
 			"Content-Type": "application/json",
 		},
 	});
-	const data = await res.json();
+	const data: GenreResponse = await res.json();
 	return data.genres;
 };

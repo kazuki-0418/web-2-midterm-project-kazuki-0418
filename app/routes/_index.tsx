@@ -1,5 +1,4 @@
-import type { LoaderFunctionArgs } from "@remix-run/node";
-import { redirect } from "@remix-run/node";
+import { type LoaderFunctionArgs, json, redirect } from "@remix-run/cloudflare";
 import { useLoaderData } from "@remix-run/react";
 import { Home } from "../components/pages/home/home";
 import { getGenres } from "../services/getGenres";
@@ -15,7 +14,7 @@ export async function loader({ request }: LoaderFunctionArgs) {
 
 	const widow =
 		(url.searchParams.get("widow") as TimeWidow | undefined) ?? "day";
-	return Response.json({
+	return json({
 		genres: await getGenres(language),
 		movies: await getMovies(widow, language),
 		tvs: await getTvs(widow, language),

@@ -1,5 +1,5 @@
-import type { LoaderFunctionArgs } from "@remix-run/node";
-import { redirect, useLoaderData, useParams } from "@remix-run/react";
+import { type LoaderFunctionArgs, json, redirect } from "@remix-run/cloudflare";
+import { useLoaderData, useParams } from "@remix-run/react";
 import { AboutPage } from "../components/pages/about";
 import { getGenres } from "../services/getGenres";
 import { getUserLanguage } from "../services/getLanguage";
@@ -12,7 +12,7 @@ export async function loader({ request }: LoaderFunctionArgs) {
 	const language = await getUserLanguage(request);
 	const widow =
 		(new URL(request.url).searchParams.get("widow") as TimeWidow) ?? "day";
-	return Response.json({
+	return json({
 		genres: await getGenres(language),
 		movies: await getMovies(widow, language),
 		language,
