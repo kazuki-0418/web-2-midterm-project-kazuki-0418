@@ -1,0 +1,13 @@
+{
+	"compilerOptions": {
+		"types": [
+			"@remix-run/cloudflare",
+			"vite/client",
+			"@cloudflare/workers-types/2023-07-01"
+		],
+		"jsx": "react-jsx",
+		"skipLibCheck": true,
+		"module": "ESNext",
+		"moduleResolution": "Bundler"
+	}
+}
