@@ -5,13 +5,13 @@ type ResponseMovie = {
 	results: Movie[];
 };
 
-export const getMovies = async (timeWidow: TimeWidow, language: string) => {
+export const getMovies = async (apiKey:string,timeWidow: TimeWidow, language: string) => {
 	const res = await fetch(
 		`https://api.themoviedb.org/3/trending/movie/${timeWidow}?language=${language}`,
 		{
 			headers: {
 				method: "GET",
-				Authorization: `Bearer ${process.env.API_KEY}`,
+				Authorization: `Bearer ${apiKey}`,
 				"Content-Type": "application/json",
 			},
 		},

@@ -1,8 +1,6 @@
 import { createRequestHandler } from "@remix-run/express";
-import { installGlobals } from "@remix-run/node";
 import express from "express";
 
-installGlobals();
 
 const viteDevServer =
 	process.env.NODE_ENV === "production"
@@ -39,5 +37,5 @@ app.all(
 	}),
 );
 
-const port = 3000;
+const port = 8788;
 app.listen(port, () => console.log(`http://localhost:${port}`));

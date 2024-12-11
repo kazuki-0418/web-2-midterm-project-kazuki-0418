@@ -6,17 +6,15 @@ import { installGlobals } from "@remix-run/node";
 import { vanillaExtractPlugin } from "@vanilla-extract/vite-plugin";
 import { defineConfig } from "vite";
 import tsconfigPaths from "vite-tsconfig-paths";
-import { getLoadContext } from "./load-context";
 
 installGlobals();
 
 export default defineConfig({
 	server: {
-		port: 3000,
+		port: 8788,
 	},
 	plugins: [
 		cloudflareDevProxyVitePlugin({
-			getLoadContext,
 		}),
 		remix({
 			future: {

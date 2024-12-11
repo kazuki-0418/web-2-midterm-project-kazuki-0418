@@ -7,14 +7,16 @@ import { getMovies } from "../services/getMovies";
 import type { Movie } from "../types/Movie";
 import type { TimeWidow } from "../types/TimeWidow";
 import { langCookie } from "../utils/languageCookie";
+import { extractEnvVars } from "../utils/extractEnvVars";
 
-export async function loader({ request }: LoaderFunctionArgs) {
+export async function loader({ request,context }: LoaderFunctionArgs) {
+	const {BASE_URL,API_KEY} = extractEnvVars(context)
 	const language = await getUserLanguage(request);
 	const widow =
 		(new URL(request.url).searchParams.get("widow") as TimeWidow) ?? "day";
 	return json({
-		genres: await getGenres(language),
-		movies: await getMovies(widow, language),
+		genres: await getGenres(BASE_URL,API_KEY,language),
+		movies: await getMovies(API_KEY,widow, language),
 		language,
 	});
 }

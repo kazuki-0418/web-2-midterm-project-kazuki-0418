@@ -6,15 +6,17 @@ import { getUserLanguage } from "../services/getLanguage";
 import { getTvs } from "../services/getTvs";
 import type { Tv } from "../types/TV";
 import type { TimeWidow } from "../types/TimeWidow";
+import { extractEnvVars } from "../utils/extractEnvVars";
 
-export async function loader({ request }: LoaderFunctionArgs) {
+export async function loader({ request,context }: LoaderFunctionArgs) {
 	const language = (await getUserLanguage(request)) || "en";
+	const {BASE_URL,API_KEY} = extractEnvVars(context)
 	const widow =
 		(new URL(request.url).searchParams.get("widow") as TimeWidow) ?? "day";
 
 	return json({
-		genres: await getGenres(language),
-		tvs: await getTvs(widow, language),
+		genres: await getGenres(BASE_URL,API_KEY,language),
+		tvs: await getTvs(API_KEY,widow, language),
 		language,
 	});
 }
