@@ -4,11 +4,12 @@ type GenreResponse = {
 	genres: Genre[];
 };
 
-export const getGenres = async (language: string): Promise<Genre[]> => {
-	const res = await fetch(`${process.env.BASE_URL}?language=${language}`, {
+export const getGenres = async (baseUrl:string, apiKey:string,language: string,): Promise<Genre[]> => {
+	
+	const res = await fetch(`${baseUrl}?language=${language}`, {
 		headers: {
 			method: "GET",
-			Authorization: `Bearer ${process.env.API_KEY}`,
+			Authorization: `Bearer ${apiKey}`,
 			"Content-Type": "application/json",
 		},
 	});

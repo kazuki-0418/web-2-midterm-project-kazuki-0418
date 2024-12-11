@@ -1,6 +1,5 @@
-import { useLocation } from "@remix-run/react";
+import { Link, useFetcher, useLocation, useSearchParams } from "@remix-run/react";
 import type { FC } from "react";
-import { Link, useFetcher, useSearchParams } from "react-router-dom";
 import { NavigationMenuComponent } from ".";
 import Dialog from "../dialog";
 import { Select } from "../select";

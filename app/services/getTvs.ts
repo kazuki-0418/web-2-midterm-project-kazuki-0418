@@ -5,12 +5,12 @@ type ResponseTv = {
 	results: Tv[];
 };
 
-export const getTvs = async (timeWidow: TimeWidow, language: string) => {
+export const getTvs = async (apiKey:string,timeWidow: TimeWidow, language: string) => {
 	const res = await fetch(
 		`https://api.themoviedb.org/3/trending/tv/${timeWidow}?language=${language}`,
 		{
 			headers: {
-				Authorization: `Bearer ${process.env.API_KEY}`,
+				Authorization: `Bearer ${apiKey}`,
 				"Content-Type": "application/json",
 			},
 		},
@@ -18,3 +18,4 @@ export const getTvs = async (timeWidow: TimeWidow, language: string) => {
 	const data: ResponseTv = await res.json();
 	return data.results;
 };
+
